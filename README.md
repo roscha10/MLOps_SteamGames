@@ -1,12 +1,18 @@
 ![Pandas](https://img.shields.io/badge/-Pandas-333333?style=flat&logo=pandas) ![Numpy](https://img.shields.io/badge/-Numpy-333333?style=flat&logo=numpy) ![Matplotlib](https://img.shields.io/badge/-Matplotlib-333333?style=flat&logo=matplotlib) ![Seaborn](https://img.shields.io/badge/-Seaborn-333333?style=flat&logo=seaborn) ![Scikitlearn](https://img.shields.io/badge/-Scikitlearn-333333?style=flat&logo=scikitlearn) ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi) ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker) ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
+<p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
+  
+# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
 
-<h1 align="center"><b> Steam Game Recommender </b></h1>
+
+# <h1 align=center>Steam Game Recommender 
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
+</p>
 
 **`Autor: Roberto Schaefer`**
 
 [LinkedIn](www.linkedin.com/in/roberto-schaefer-506567264)
-
-# Steam Game Recommender 
 
 ## Introducción
 
@@ -40,3 +46,6 @@ En el proceso de transformación de datos para este proyecto, realizamos la extr
 - [SteamGames_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A1_SteamGames_ETL.ipynb)
 - [UserReviews_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A2_UserReviews_ETL.ipynb)
 - [UserItems_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A3_UserItems_ETL.ipynb)
+
+# Despliegue de la API
+En este [link](https://mlops-steamgames.onrender.com/docs) se podrá acceder a la API y realizar consultas.
