@@ -14,14 +14,28 @@ df_top_positive_games_by_year = pd.read_csv('./Data_API/df_top_positive_games_by
 df_top_negative_games_by_year = pd.read_csv('./Data_API/df_top_negative_games_by_year.csv')
 df_sentiment_counts = pd.read_csv('./Data_API/df_sentiment_counts.csv')
 
-#INICIO DE LA API
 
-#1
+#Endpoint 1
+
+# Ruta para obtener el año con más horas jugadas para un género específico
 @app.get("/most_played_genre/{genre}")
-async def PlayTimeGenre(genre):
+async def PlayTimeGenre(genre: str):
     """
-    Retornar el género mas jugado por año.
+    Año con más horas jugadas para el género dado.
+
+    Esta función recibe un género y retorna el año de lanzamiento con más horas jugadas para ese género.
+
+    Parámetros
+    ----------
+    genre : str
+        Género en inglés, por ejemplo: "Action", "Simulation", "Indie", etc.
+
+    Retorno
+    -------
+    Ejemplo:
+    {"Año de lanzamiento con más horas jugadas para Género Action" : 2012}
     """
+      
     # Filtra el DataFrame por el género especificado
     genre_data = df_most_played_year[df_most_played_year['genres'] == genre]
     
@@ -32,11 +46,12 @@ async def PlayTimeGenre(genre):
     max_playtime_year = genre_data.iloc[0]['release_year']
     
     # Devuelve el resultado en el formato deseado
-    result = f"Año de lanzamiento con más horas jugadas para el género {genre}: {max_playtime_year}"
+    result = {f"Año de lanzamiento con más horas jugadas para el género {genre}": max_playtime_year}
     
     return result
 
-#2
+
+#Endpoint 2
 @app.get("/most_hours_played_genre/{genre}")
 def UserForGenre(genre):
 
