@@ -43,9 +43,9 @@ Este dataset contiene datos detallados sobre juegos, incluyendo la empresa publi
 En el proceso de transformación de datos para este proyecto, realizamos la extracción, transformación y carga (ETL) de los tres conjuntos de datos proporcionados. Esto implicó descomprimir archivos y leerlos línea por línea. Abordamos la complejidad de conjuntos de datos con estructuras anidadas, como diccionarios o listas de diccionarios en columnas, utilizando estrategias para convertir estas estructuras en columnas separadas. Además, rellenamos valores nulos en variables esenciales, eliminamos columnas con una alta cantidad de nulos y duplicados, y descartamos columnas que no eran relevantes para el proyecto. Estas acciones se llevaron a cabo considerando las restricciones de almacenamiento y para optimizar el rendimiento de la API. El uso de la biblioteca Pandas facilitó estas transformaciones, garantizando la integridad y eficiencia de los datos finales para su implementación en el proyecto.
 
 ## Detalles de ETL:
-- [SteamGames_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A1_SteamGames_ETL.ipynb)
-- [UserReviews_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A2_UserReviews_ETL.ipynb)
-- [UserItems_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/A3_UserItems_ETL.ipynb)
+- [SteamGames_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/1A_SteamGames_ETL.ipynb)
+- [UserReviews_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/1B_UserReviews_ETL.ipynb)
+- [UserItems_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/1C_UserItems_ETL.ipynb)
 
 # Despliegue de la API
 En este [link](https://mlops-steamgames.onrender.com/docs) se podrá acceder a la API y realizar consultas.
