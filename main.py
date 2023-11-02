@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import pandas as pd
-
+from fastapi.responses import JSONResponse
 
 
 
@@ -115,3 +115,19 @@ def sentiment_analysis(year: int):
     positivo = df_sentiment_counts.loc[df_sentiment_counts.release_year == year, "total_positivos"].item()
 
     return {"Negative" : negativo, "Neutral" : neutral, "Positive" : positivo}
+
+
+#6
+df_item_similarity = pd.read_parquet('./Data_API/df_item_similarity.parquet')
+num_recomendaciones=5
+
+@app.get("/top5_recommended_games_name/{id_juego}")
+def game_recommendation(id_juego: str):
+    if id_juego in df_item_similarity:
+        juego_similaridades = df_item_similarity[id_juego]
+        juegos_similares = juego_similaridades.sort_values(ascending=False)
+        juegos_similares = juegos_similares[1:num_recomendaciones + 1]
+        recommendations = [{"Recomendación": i, "Juego": juego} for i, (juego, similitud) in enumerate(juegos_similares.items(), 1)]
+        return JSONResponse(content={"Juegos similares a": id_juego, "Recomendaciones": recommendations})
+    else:
+        return JSONResponse(content={"Mensaje": "El juego ingresado no está en la base de datos."})
