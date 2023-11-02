@@ -47,5 +47,59 @@ En el proceso de transformación de datos para este proyecto, realizamos la extr
 - [UserReviews_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/1B_UserReviews_ETL.ipynb)
 - [UserItems_ETL](https://github.com/roscha10/MLOps_SteamGames/blob/main/JupyterNotebooks/1C_UserItems_ETL.ipynb)
 
+# Desarrollo de la API
+****Endpoints* propuestos***</h4>
+
+Se proponen 6 *endpoints* iniciales. Para cada uno de los *endpoint* se desarrollo una función en Python mediantes el uso del *FrameWork* FastAPI y librerias asociadas.
+Funciones propuestas:
+
++ **PlayTimeGenre( genero : str )**: Se ingresa un genero y se retorna el año con mas horas jugadas para dicho género.
+Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
+
++ **UserForGenre( genero : str )**:  Se ingresa un genero y se retorne el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
+
+Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+
++ **UsersRecommend( año : int )**: Se ingresa un año y retorna el top 3 de juegos MÁS recomendados por usuarios para el año dado.
+  
+Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+
++ **UsersNotRecommend( año : int )**: Se ingresa un año y retorna el top 3 de juegos MENOS recomendados por usuarios para el año dado.
+  
+Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+
++ **sentiment_analysis( año : int )**: Se ingresa un año (año de lanzamiento), y retona una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.
+  
+Ejemplo de retorno: {Negative = 182, Neutral = 120, Positive = 278}
+
++ **recomendacion_juego( id de producto )**: Se ingresa el id de producto y deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
+
+# Implementación de la API
+
+Las funciones propuestas se desarrollaron de la mano de **python** y **FastAPI**, testeando su funcionamiento en el entorno local mediante **uvicorn**. En el ['main.py'](https://github.com/roscha10/MLOps_SteamGames/blob/main/main.py) mencionado anteriormente se puede observar cada uno de los *endpoints* con sus respectivas rutas y el desarrollo completo de la API.
+
 # Despliegue de la API
+
+La API finalizada fue desplegada en la plataforma render.com para su implementación. Sin embargo, se encontraron ciertas limitaciones en el entorno de despliegue gratuito, que ofrecía solo 512MB de capacidad. Para abordar estas restricciones, se tomaron medidas específicas para optimizar el rendimiento y la eficiencia de la API.
+
+Una de las principales adaptaciones consistió en la reducción de la carga de datos en el sistema de recomendación. Dado que el procesamiento requerido por el modelo de Machine Learning para procesar todos los datos excedía el límite de recursos establecido, se implementaron estrategias para limitar el volumen de datos procesados sin sacrificar la calidad de las recomendaciones.
+
+Además, se enfrentaron desafíos relacionados con las bibliotecas y versiones de software disponibles en el entorno de despliegue de render.com. Se tomó la decisión de incluir únicamente las bibliotecas necesarias para el funcionamiento de la API y asegurarse de que estas estuvieran en las versiones compatibles con el entorno de despliegue.
+
+Por otro lado, se proporcionó una interfaz gráfica mínima en la ruta inicial de la API para mostrar ejemplos visuales de las entradas de los endpoints y sus respectivas respuestas. Sin embargo, para una documentación más detallada y completa, se utilizó FastAPI para generar automáticamente la documentación esencial. Esta documentación se encuentra disponible en la ruta /docs y brinda ejemplos de consultas que los usuarios pueden ejecutar para observar las respuestas correspondientes, lo que simplifica significativamente la comprensión y el uso efectivo de la API.
+
+En resumen, el despliegue de la API en render.com implicó superar desafíos relacionados con los recursos limitados disponibles, optimizar el procesamiento de datos, adaptar bibliotecas y versiones, y proporcionar una interfaz amigable y documentación detallada para garantizar una experiencia de usuario efectiva.
+
+# EDA
+
+Este proceso se centró en la observación de la distribución de variables, la identificación de patrones, la detección de posibles valores atípicos (outliers), y otros aspectos clave. El objetivo principal del EDA fue confirmar o descartar hipótesis relacionadas con las características (features) que podrían resultar relevantes para las recomendaciones.
+
+En el transcurso del EDA, se tomó la decisión de eliminar algunos valores atípicos que podrían afectar negativamente el rendimiento del sistema de recomendación, garantizando así la calidad y precisión de las recomendaciones ofrecidas.
+
+Para obtener más detalles sobre el proceso y los hallazgos específicos del EDA empleado en este proyecto, se encuentra disponible un cuaderno Jupyter en el siguiente enlace: [Link](JupyterNotebooks/3A_EDA.ipynb)
+
+
+
+#RENDER
+
 En este [link](https://mlops-steamgames.onrender.com/docs) se podrá acceder a la API y realizar consultas.
