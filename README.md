@@ -16,7 +16,7 @@
 
 ## Introducción
 
-Este proyecto representa una simulación del rol de un MLOps Engineer, que engloba las responsabilidades de un Data Engineer y un Data Scientist, dentro del contexto de la plataforma internacional de videojuegos Steam. El objetivo principal de este proyecto es desarrollar un Producto Mínimo Viable (MVP) que no solo demuestre la capacidad de implementar una API en un servicio en la nube, sino que también presente la aplicación práctica de dos modelos de Machine Learning.
+Este proyecto representa una simulación del rol de un MLOps Engineer, que engloba las responsabilidades de un Data Engineer y un Data Scientist, dentro del contexto de la plataforma internacional de videojuegos Steam. El objetivo principal de este proyecto es desarrollar y desplegar una API a partir de un dataset crudo con información de videosjuegos, de reviews de los usuarios y de juegos jugados por usuarios (por razones de espacio no se encuentran en el repositorio, pero mas adelante encontrara el link de descarga). La misma debe contar con 6 endpoints, siendo el ultimo un sistema de recomendación de videojuegos implementado mediante Machine Learning (ML).+l
 
 
 
@@ -51,7 +51,7 @@ En el proceso de transformación de datos para este proyecto, realizamos la extr
 
 ## Análisis de sentimiento
 
-En el contexto de este proyecto, uno de los requisitos clave fue aplicar un análisis de sentimiento a las revisiones de los usuarios. Para abordar este desafío, inicialmente utilizamos la biblioteca TextBlob para realizar este análisis. Sin embargo, después de una exhaustiva revisión de los resultados, identificamos algunas inconsistencias en la calificación de los sentimientos en los comentarios de los usuarios.
+En el contexto de este proyecto, uno de los requisitos clave fue aplicar un análisis de sentimiento a las reviews de los usuarios. Para abordar este desafío, inicialmente utilizamos la biblioteca TextBlob para realizar este análisis. Sin embargo, después de una exhaustiva revisión de los resultados, identificamos algunas inconsistencias en la calificación de los sentimientos en los comentarios de los usuarios.
 
 Como respuesta a esta situación, realizamos una investigación adicional y exploramos otras bibliotecas. Fue entonces cuando descubrimos la biblioteca NLTK (Natural Language Toolkit) y su módulo SentimentIntensityAnalyzer. Este módulo demostró una mayor consistencia en la calificación de sentimientos, lo que lo convirtió en la elección principal para este proyecto.
 
@@ -147,3 +147,8 @@ Para información más detallada y uso del modelo de manera externa a la API vea
 # Link de Interés
 
 En este [link](https://mlops-steamgames.onrender.com/docs) se podrá acceder a la API y realizar consultas.
+
+<p align=center><img src=Image/fastapi.jpeg><p> 
+
+**Video Demostrativo:**</h3>
+[**Video demostración**
