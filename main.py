@@ -2,9 +2,11 @@ from fastapi import FastAPI
 import pandas as pd
 from fastapi.responses import JSONResponse
 
-
-
+#DATA GENERAL DE LA API
 app = FastAPI()
+app.title = "Steam API - ML SteamGameRecommender"
+app.version = "1.0.0"
+
 
 #DATASETS
 
@@ -15,35 +17,49 @@ df_top_negative_games_by_year = pd.read_csv('./Data_API/df_top_negative_games_by
 df_sentiment_counts = pd.read_csv('./Data_API/df_sentiment_counts.csv')
 
 
-#Endpoint 1
+# Endpoint 1
 
 # Ruta para obtener el año con más horas jugadas para un género específico
 @app.get("/most_played_genre/{genre}")
-async def PlayTimeGenre(genre: str):
+async def PlayTimeGenre(genre):
     """
-    Año con más horas jugadas para el género dado.
+    <font color="blue">
+    <h1><u>PlayTimeGenre</u></h1>
+    </font>
 
-    Esta función recibe un género y retorna el año de lanzamiento con más horas jugadas para ese género.
+    <b>Año con más horas jugadas para el género dado.</b><br>
+    <b>Esta función recibe un género y retorna el año de lanzamiento con más horas jugadas para ese género.</b><br>
 
-    Parámetros
+    <em>Parámetros</em><br>
     ----------
-    genre : str
+    genre : <code>str</code>
+    
         Género en inglés, por ejemplo: "Action", "Simulation", "Indie", etc.
 
-    Retorno
-    -------
+    <em>Retorno</em><br>
+    -----------
     Ejemplo:
+    ```python
+        >>> PlayTimeGenre("Action")
+    
     {"Año de lanzamiento con más horas jugadas para Género Action" : 2012}
+    ```
+    INSTRUCCIONES<br>
+                        1. Haga clic en "Try it out".<br>
+                        2. Ingrese el Género en el cuadro de abajo. (Primera letra Mayuscula, ejemplo: Indie)<br>
+                        3. Presiona Excute.<br>
+                        4. Desplácese hacia "Response body" para ver el resultado.
+                        </font>
+
     """
-      
     # Filtra el DataFrame por el género especificado
     genre_data = df_most_played_year[df_most_played_year['genres'] == genre]
     
     if genre_data.empty:
         return f'El género {genre} no se encuentra en el conjunto de datos.'
     
-    # Obtiene el año directamente
-    max_playtime_year = genre_data.iloc[0]['release_year']
+    # Obtiene el año directamente y conviértelo a un tipo de dato int
+    max_playtime_year = int(genre_data.iloc[0]['release_year'])
     
     # Devuelve el resultado en el formato deseado
     result = {f"Año de lanzamiento con más horas jugadas para el género {genre}": max_playtime_year}
@@ -51,10 +67,41 @@ async def PlayTimeGenre(genre: str):
     return result
 
 
+
 #Endpoint 2
 @app.get("/most_hours_played_genre/{genre}")
 def UserForGenre(genre):
+    """
+        <font color="blue">
+        <h1><u>UserForGenre</u></h1>
+        </font>
 
+        <b>Usuario con más horas jugadas para Género dado.</b><br>
+        <b>Esta función recibe un género y retorna  el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.</b><br>
+
+        <em>Parámetros</em><br>
+        ----------
+        genre : <code>str</code>
+        
+            Género en inglés, por ejemplo: "Action", "Simulation", "Indie", etc.
+
+        <em>Retorno</em><br>
+        -----------
+        Ejemplo:
+        ```python
+            >>> UserForGenre("Action")
+        
+        {"Usuario con más horas jugadas para Género Action" : "thiefofrosesinlalaland, "Horas jugadas":
+        [{{Año: 2014, Horas: 7107.58}, {Año: 2015, Horas: 331.12}]}
+        ```
+        INSTRUCCIONES<br>
+                            1. Haga clic en "Try it out".<br>
+                            2. Ingrese el Género en el cuadro de abajo. (Primera letra Mayuscula, ejemplo: Simulation)<br>
+                            3. Presiona Excute.<br>
+                            4. Desplácese hacia "Response body" para ver el resultado.
+                            </font>
+
+        """
     # Filtra el DataFrame por el género especificado
     genre_data = df_maxuser_genre_cleaned[df_maxuser_genre_cleaned['genres'] == genre]
     
