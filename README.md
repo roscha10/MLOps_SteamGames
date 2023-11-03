@@ -1,4 +1,4 @@
-![Pandas](https://img.shields.io/badge/-Pandas-333333?style=flat&logo=pandas) ![Numpy](https://img.shields.io/badge/-Numpy-333333?style=flat&logo=numpy) ![Matplotlib](https://img.shields.io/badge/-Matplotlib-333333?style=flat&logo=matplotlib) ![Seaborn](https://img.shields.io/badge/-Seaborn-333333?style=flat&logo=seaborn) ![Scikitlearn](https://img.shields.io/badge/-Scikitlearn-333333?style=flat&logo=scikitlearn) ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi) ![Docker](https://img.shields.io/badge/-Docker-333333?style=flat&logo=docker) ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render)
+![Github](https://camo.githubusercontent.com/544426317a6c6226b7f6b3367232378ea367aa5001a41da4f302a77f9959909f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4769744875622d3333333333333f7374796c653d666c6174266c6f676f3d676974687562) ![Pandas](https://img.shields.io/badge/-Pandas-333333?style=flat&logo=pandas) ![Numpy](https://img.shields.io/badge/-Numpy-333333?style=flat&logo=numpy) ![Matplotlib](https://img.shields.io/badge/-Matplotlib-333333?style=flat&logo=matplotlib) ![Seaborn](https://img.shields.io/badge/-Seaborn-333333?style=flat&logo=seaborn) ![Scikitlearn](https://img.shields.io/badge/-Scikitlearn-333333?style=flat&logo=scikitlearn) ![FastAPI](https://img.shields.io/badge/-FastAPI-333333?style=flat&logo=fastapi)  ![jupyter](https://camo.githubusercontent.com/520feca36c380051805100a73d5b396d4a27490fb5dacbc9e87c03e2ca4fd7f4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a7570797465722d3333333333333f7374796c653d666c6174266c6f676f3d6a757079746572) ![Render](https://img.shields.io/badge/-Render-333333?style=flat&logo=render) ![Visual](https://camo.githubusercontent.com/194ae9b0be9bfd4caedab16de320d3987f4c144112461590a206262d21eb769b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d56697375616c25323053747564696f253230436f64652d3333333333333f7374796c653d666c6174266c6f676f3d76697375616c2d73747564696f2d636f6465266c6f676f436f6c6f723d303037414343)
 <p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
   
 # <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
@@ -127,12 +127,23 @@ En resumen, el despliegue de la API en render.com implicó superar desafíos rel
 
 ## Desarrollo del sistema de recomendación
 
+El proceso de nuestro sistema de recomendacion comienza cuando un usuario ingresa el nombre de un videojuego. El sistema responde proporcionando una lista de los cinco videojuegos que considera más similares al juego ingresado. Para lograr esto, empleamos una matriz de similitud de coseno.
+
+### Matriz de Similitud de Coseno:
+
+La matriz de similitud de coseno es una herramienta fundamental en nuestro proyecto de recomendación de videojuegos. Esta matriz se utiliza para calcular las similitudes entre todos los pares de videojuegos en nuestro conjunto de datos. Su funcionamiento se basa en la medida de la similitud angular entre los vectores que representan los videojuegos en un espacio multidimensional. Una similitud más alta indica que los juegos son más parecidos en términos de sus atributos y características.
+
+### Preparación de datos:
+
+En nuestro enfoque para el desarrollo del sistema de recomendación, utilizamos un enfoque detallado para calcular un puntaje de recomendación llamado 'Recommendation'. Este puntaje se sitúa en una escala del 1 al 5 y se basa en dos factores clave: el análisis de sentimiento de las reseñas de los juegos y las recomendaciones de los usuarios. Este enfoque integral nos permite brindar recomendaciones de juegos altamente personalizadas y precisas que se ajustan a las preferencias y experiencias de cada usuario, enriqueciendo su interacción con nuestra plataforma.
+
+### Obtención de los 5 juegos más similares:
+
+Una vez que el usuario ingresa el nombre de un juego como consulta, el sistema mapea ese título a un índice en la matriz de similitud de coseno. Luego, utilizando estos índices, el sistema identifica los cinco juegos más similares al juego de consulta. Estos juegos se seleccionan en función de su similitud con el juego ingresado, y posteriormente se devuelven los títulos de estos juegos similares al usuario. Este proceso permite a los usuarios descubrir juegos relacionados y afines a sus preferencias, mejorando así su experiencia de juego y exploración en nuestra plataforma.
+
+Para información más detallada y uso del modelo de manera externa a la API vea:[Link](JupyterNotebooks/4A_recommendation_model.ipynb)
 
 
-
-
-
-
-#RENDER
+# Link de Interés
 
 En este [link](https://mlops-steamgames.onrender.com/docs) se podrá acceder a la API y realizar consultas.
