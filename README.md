@@ -12,7 +12,7 @@
 
 **`Autor: Roberto Schaefer`**
 
-[LinkedIn](www.linkedin.com/in/roberto-schaefer-506567264)
+[LinkedIn](https://www.linkedin.com/in/roberto-schaefer-506567264/)
 
 ## Introducción
 
