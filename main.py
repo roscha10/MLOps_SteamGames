@@ -130,6 +130,37 @@ def UserForGenre(genre):
 #3
 @app.get("/top_3_MOST_recommended_games/{year}")
 def UsersRecommend(year):
+    """
+        <font color="blue">
+        <h1><u>UsersRecommend</u></h1>
+        </font>
+
+        <b>Top 3 de juegos MÁS recomendados por usuarios para el año dado. .</b><br>
+        <b>Esta función recibe un año y retorna el top 3 de juegos MÁS recomendados por usuarios para el año dado. .</b><br>
+
+        <em>Parámetros</em><br>
+        ----------
+        año : <code>int</code>
+        
+            Año, por ejemplo: 2010, 2012, etc.
+
+        <em>Retorno</em><br>
+        -----------
+        Ejemplo:
+        ```python
+            >>> UsersRecommend(2012)
+        
+        [{"Puesto 1" : "Team Fortress 2"}, {"Puesto 2" : "Terraria"},{"Puesto 3" : "Garry's Mod"}]
+        
+        ```
+        INSTRUCCIONES<br>
+                            1. Haga clic en "Try it out".<br>
+                            2. Ingrese el Año en el cuadro de abajo. <br>
+                            3. Presiona Excute.<br>
+                            4. Desplácese hacia "Response body" para ver el resultado.
+                            </font>
+
+        """
     # Filtrar el DataFrame por el año dado
     filtered_df = df_top_positive_games_by_year[df_top_positive_games_by_year['reviews_year'] == year]
     
@@ -147,6 +178,37 @@ def UsersRecommend(year):
 #4
 @app.get("/top_3_LEAST_recommended_games/{year}")
 def UsersNotRecommend(year):
+    """
+        <font color="blue">
+        <h1><u>sersNotRecommend</u></h1>
+        </font>
+
+        <b>Top 3 de juegos MENOS recomendados por usuarios para el año dado. .</b><br>
+        <b>Esta función recibe un año y retorna el top 3 de juegos MENOS recomendados por usuarios para el año dado. .</b><br>
+
+        <em>Parámetros</em><br>
+        ----------
+        año : <code>int</code>
+        
+            Año, por ejemplo: 2010, 2012, etc.
+
+        <em>Retorno</em><br>
+        -----------
+        Ejemplo:
+        ```python
+            >>> UsersNotRecommend(2015)
+        
+        [{"Puesto 1" : ""Counter-Strike: Global Offensive""}, {"Puesto 2" : "DayZ"},{"Puesto 3" : "Rust"}]
+        
+        ```
+        INSTRUCCIONES<br>
+                            1. Haga clic en "Try it out".<br>
+                            2. Ingrese el Año en el cuadro de abajo. <br>
+                            3. Presiona Excute.<br>
+                            4. Desplácese hacia "Response body" para ver el resultado.
+                            </font>
+
+        """
     # Filtrar el DataFrame por el año dado
     filtered_df = df_top_negative_games_by_year[df_top_negative_games_by_year['reviews_year'] == year]
     
@@ -166,8 +228,36 @@ def UsersNotRecommend(year):
 @app.get("/reviews_sentiment_analysis/{year}")
 def sentiment_analysis(year: int):
     """
-    Retornar el número de reviews negativas, neutrales y positivas para un año dado.
-    """
+        <font color="blue">
+        <h1><u>sentiment_analysis</u></h1>
+        </font>
+
+        <b>Análisis de sentimiento, para reviews por año.</b><br>
+        <b>Esta función recibe un año y retorna una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.</b><br>
+
+        <em>Parámetros</em><br>
+        ----------
+        año : <code>int</code>
+        
+            Año, por ejemplo: 2010, 2012, etc.
+
+        <em>Retorno</em><br>
+        -----------
+        Ejemplo:
+        ```python
+            >>> sentiment_analysis(2015)
+        
+        [{Negative = 928, Neutral = 1908, Positive = 3653}]
+        
+        ```
+        INSTRUCCIONES<br>
+                            1. Haga clic en "Try it out".<br>
+                            2. Ingrese el Año en el cuadro de abajo. <br>
+                            3. Presiona Excute.<br>
+                            4. Desplácese hacia "Response body" para ver el resultado.
+                            </font>
+
+        """
     # Crear un dataframe donde las filas son años y las columnas análisis de sentimiento.
     df_sentiment_counts = pd.read_csv('./Data_API/df_sentiment_counts.csv')
 
@@ -183,13 +273,68 @@ def sentiment_analysis(year: int):
 df_item_similarity = pd.read_parquet('./Data_API/df_item_similarity.parquet')
 num_recomendaciones=5
 
-@app.get("/top5_recommended_games_name/{id_juego}")
-def game_recommendation(id_juego: str):
-    if id_juego in df_item_similarity:
-        juego_similaridades = df_item_similarity[id_juego]
+@app.get("/top5_recommended_games_name/{item_name}")
+def game_recommendation(item_name: str):
+    """
+        <font color="blue">
+        <h1><u>game_recommendation</u></h1>
+        </font>
+
+        <b>Lista con 5 juegos recomendados similares al ingresado.</b><br>
+        <b>Esta función recibe un nombre de videojuego y retorna una lista con 5 juegos recomendados similares al ingresado.</b><br>
+
+        <em>Parámetros</em><br>
+        ----------
+        item_name : <code>str</code>
+        
+            Nombre del videojuego, por ejemplo: Renegade Ops, Pro Evolution Soccer 2013, SimCity 4 Deluxe, etc.
+
+        <em>Retorno</em><br>
+        -----------
+        Ejemplo:
+        ```python
+            >>> game_recommendation(2015)
+                
+                [{
+        "Juegos similares a": "Renegade Ops",
+        "Recomendaciones": [
+            {
+            "Recomendación": 1,
+            "Juego": "Xpand Rally Xtreme"
+            },
+            {
+            "Recomendación": 2,
+            "Juego": "Puzzle Agent"
+            },
+            {
+            "Recomendación": 3,
+            "Juego": "Counter-Strike"
+            },
+            {
+            "Recomendación": 4,
+            "Juego": "FTL: Faster Than Light"
+            },
+            {
+            "Recomendación": 5,
+            "Juego": "Sid Meier's Civilization V"
+            }
+            ]
+            }]
+         ```
+
+        INSTRUCCIONES<br>
+                            1. Haga clic en "Try it out".<br>
+                            2. Ingrese el nombre del videojuego en el cuadro de abajo. (Primera letra Mayuscula, ejemplo: SimCity 4 Deluxe)<br>
+                            3. Presiona Excute.<br>
+                            4. Desplácese hacia "Response body" para ver el resultado.
+                            </font>
+
+        """
+    if item_name in df_item_similarity:
+        juego_similaridades = df_item_similarity[item_name]
         juegos_similares = juego_similaridades.sort_values(ascending=False)
         juegos_similares = juegos_similares[1:num_recomendaciones + 1]
         recommendations = [{"Recomendación": i, "Juego": juego} for i, (juego, similitud) in enumerate(juegos_similares.items(), 1)]
-        return JSONResponse(content={"Juegos similares a": id_juego, "Recomendaciones": recommendations})
+        return JSONResponse(content={"Juegos similares a": item_name, "Recomendaciones": recommendations})
     else:
         return JSONResponse(content={"Mensaje": "El juego ingresado no está en la base de datos."})
