@@ -26,7 +26,7 @@ Este proyecto representa una simulación del rol de un MLOps Engineer, que englo
 Steam, lanzada en 2003 por Valve Corporation, inicialmente como una plataforma de actualización de juegos, ha evolucionado para ser una distribuidora líder de videojuegos y contenido multimedia. Ofrece servicios de protección contra la piratería, emparejamiento de servidores, streaming de video y funciones sociales. Se utiliza tanto por desarrolladores independientes como grandes corporaciones. En 2016, Steam contaba con más de 7300 juegos y más de 142 millones de cuentas de usuarios activas. Su sistema de revisiones personalizadas ha mejorado la experiencia del usuario, destacándose como un referente en la industria de juegos de PC.
 
 
-## Datasets
+## Datasets originales
 
 **user_reviews.json.gz:**
 Este dataset incluye comentarios de usuarios sobre juegos en Steam. Cada revisión contiene detalles como emoticones "graciosos," fechas de publicación y edición, ID del juego, estadísticas de utilidad, y recomendaciones. Los usuarios también están identificados por su ID y URL de perfil.
@@ -36,6 +36,8 @@ En este dataset, se registran los juegos jugados por los usuarios de Steam, junt
 
 **steam_games.json.gz:**
 Este dataset contiene datos detallados sobre juegos, incluyendo la empresa publicadora, géneros, nombre del juego, título, URL, fecha de lanzamiento, etiquetas, URL de reseñas, especificaciones, precio y acceso temprano (True/False). Cada juego está identificado con un ID único y el nombre del desarrollador.
+
+Datos Crudos: [Dataset_Original](https://drive.google.com/drive/folders/1HqBG2-sUkz_R3h1dZU5F2uAzpRn7BSpj)
 
 # Camino recorrido al MVP:
 
@@ -63,7 +65,7 @@ El propósito de esta etapa de ingeniería de características es proporcionar u
 
 Para obtener detalles más específicos sobre el desarrollo de esta etapa de análisis de sentimiento, se encuentra disponible una Jupyter Notebook detallada en el siguiente enlace: [Link](JupyterNotebooks/1D_Sentiment_Analysis.ipynb).
 
-## Datasets
+## Datasets procesados
 
 Con el propósito de optimizar la eficiencia en la respuesta de las consultas de la API y en consideración de las limitaciones de almacenamiento impuestas por el servicio en la nube para la implementación de la API, llevamos a cabo un proceso clave de gestión de datos. Como parte de este proceso, creamos dataframes auxiliares específicos para cada una de las funciones requeridas en el sistema de recomendación.
 
@@ -122,6 +124,13 @@ Además, se enfrentaron desafíos relacionados con las bibliotecas y versiones d
 Por otro lado, se proporcionó una interfaz gráfica mínima en la ruta inicial de la API para mostrar ejemplos visuales de las entradas de los endpoints y sus respectivas respuestas. Sin embargo, para una documentación más detallada y completa, se utilizó FastAPI para generar automáticamente la documentación esencial. Esta documentación se encuentra disponible en la ruta /docs y brinda ejemplos de consultas que los usuarios pueden ejecutar para observar las respuestas correspondientes, lo que simplifica significativamente la comprensión y el uso efectivo de la API.
 
 En resumen, el despliegue de la API en render.com implicó superar desafíos relacionados con los recursos limitados disponibles, optimizar el procesamiento de datos, adaptar bibliotecas y versiones, y proporcionar una interfaz amigable y documentación detallada para garantizar una experiencia de usuario efectiva.
+
+## Desarrollo del sistema de recomendación
+
+
+
+
+
 
 
 #RENDER
